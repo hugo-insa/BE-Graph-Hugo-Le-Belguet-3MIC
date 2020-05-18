@@ -3,6 +3,8 @@ package org.insa.graphs.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Iterator;
+
 
 /**
  * <p>
@@ -198,11 +200,30 @@ public class Path {
      * 
      * @return true if the path is valid, false otherwise.
      * 
-     * @deprecated Need to be implemented.
+     *  Need to be implemented.
      */
     public boolean isValid() {
-        // TODO:
-        return false;
+    	if(this.size() == 1) {
+        	return true;
+        }
+        else if (this.isEmpty() == true) {
+        	return true;
+        }
+        else if(this.origin == this.arcs.get(0).getOrigin()) {
+        	Iterator<Arc> iterArcs = this.arcs.iterator();
+        	Arc destination = iterArcs.next();
+        	while(iterArcs.hasNext()) {
+        		Arc origine = iterArcs.next();
+        		if (!origine.getOrigin().equals(destination.getDestination())) {
+	        		return false;
+	        	}
+        		destination = origine;
+        	}
+        	return true;
+        }
+        else {
+        	return false;
+        }
     }
 
     /**
