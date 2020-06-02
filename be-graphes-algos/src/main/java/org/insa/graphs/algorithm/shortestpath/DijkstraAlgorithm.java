@@ -78,7 +78,6 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
             	this.SommetExplores++;
             	
             	/* print le nombre de sommets explorés */
-            	System.out.println(SommetExplores);
 
                 // Small test to check allowed roads...
                 if (!data.isAllowed(a)) {
@@ -119,6 +118,7 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
         		}
         	}
         }
+        System.out.println(SommetExplores);
         
         
         // Destination has no predecessor, the solution is infeasible...
